@@ -39,4 +39,51 @@ class LinkedList {
         this.length++
         return this
     }
-}
+
+    // A method to remove a node from the end of the linked list.
+    // Edge cases: (1) There are no nodes, (2) There is only one node
+    pop () {
+        // Addressing edge case (1) no nodes by returning undefined is
+        // the head is pointing at nothing as there's no nodes if so
+        if (!this.head) return undefined
+        // If there's two or more nodes this code runs
+        let temp = this.head
+        let pre = this.head
+
+        // Temp moves over one space each loop and is followed by pre in the
+        // next iteration. Once temp.next is no longer true it no longer moves
+        // and pre will be at the node previous.
+        while (temp.next) {
+            pre = temp
+            temp = temp.next
+        }
+        // Tail is then set to pre which is at the second last node and the
+        // next node for tail is set to null. Length of the linked list is then
+        // decremeneted by 1
+        this.tail = pre
+        this.tail.next = null
+        this.length--
+        // If there's only one node in the list the head and tail are both set
+        // to null
+        if (this.length === 0) {
+            this.head = null
+            this.tail = null
+        }
+        // Temp, the item that is popped off, is returned
+        return temp
+        }
+    }
+
+    // unshift
+
+    // shift
+
+    // get
+
+    // set
+
+    // insert
+
+    // remove
+
+    // reverse
