@@ -72,11 +72,59 @@ class LinkedList {
         // Temp, the item that is popped off, is returned
         return temp
         }
-    }
 
-    // unshift
+    // Method to add an element to the beginning of the linked list
+    // Returns the linkedlist with the new node added at the start
+    // Edge cases are (1) there are no nodes
+    unshift (value) {
+        // Creates the node to add to the start of the linked list
+        const newNode = new Node(value)
+        // Handle edge case (1) of there being no nodes by setting 
+        // both the head and tail to point at the new node
+        if (!this.head) {
+            this.head = newNode
+            this.tail = newNode
+        } 
+        // If there are nodes in the linked list this code runs
+        // It sets the next value of the new node to point at the
+        // node the head is currently pointing at, then setting the
+        // head to point at the new node being added
+        else {
+            newNode.next = this.head
+            this.head = newNode
+        }
+        // for both cases the length is then incremented by one and
+        // the linked list is returned with the new node added
+        this.length++
+        return this
+        }
 
-    // shift
+        // Method to remove the first node of the linkedlist
+        // Returns the linkedlist after the node is removed
+        // Edge cases are (1) There are no nodes, (2) There is only one node
+        shift () {
+            // Returns undefined is there are no nodes in the list
+            if (!this.head) {
+                return undefined }
+            // If there is only one node both head & tail are set to null
+            // and undefined is returned
+            else if (this.length === 1) {
+                this.head = null
+                this.tail = this.head
+                this.length--
+                return undefined
+                }
+            // If it's not an edge case this code runs. The head is set to
+            // point at the next node.
+            else {
+                this.head = this.head.next
+            }
+            // This code always runs. It decrements the length by 1 and 
+            // returns the linked list after the node is removed
+            this.length--
+            return this
+        }
+}
 
     // get
 
