@@ -124,10 +124,38 @@ class LinkedList {
             this.length--
             return this
         }
+
+        // A method to get a node from a specific index in a linked list
+        // Returns the node at the specified index
+        // Edge cases are (1) there are no nodes
+        get (index) {
+            // Checks for edge case (1), code inside the if statement runs if
+            // the list is empty and returns undefined.
+            if (this.length === 0) {
+                return undefined
+            } 
+            // If there are nodes in the list this code will run instead
+            else {
+                // Declaring iteration variable & temp variable that will be
+                // used to find the node at the specified index. Temp variable
+                // is set equal to head.
+                let i = 0
+                let temp = this.head
+
+                // While i is smaller than the index, keep iterating
+                while (i < index) {
+                    // Temp moves to the next node
+                    temp = temp.next
+                    // i is incremented by 1 for each loop
+                    i++
+                }
+
+                // Once the loop is done return the node that temp
+                // is pointing at
+                return temp
+            }
+        }
 }
-
-    // get
-
     // set
 
     // insert
