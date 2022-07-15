@@ -155,8 +155,27 @@ class LinkedList {
                 return temp
             }
         }
+
+        // Method to change the value of the node at the specified index
+        // Edge cases (1) There are no nodes, (2) index doesn't exist
+        set (index, value) {
+            // Checks if the index exists, returns undefined if it doesn't
+            if (index < 0 || index > this.length) { 
+                return undefined
+            }
+            // If the index exists this code runs instead
+            else {
+                // Declaring a temp variable to get the node at the 
+                // specified index by using the get method on it
+                let temp
+                temp = this.get(index)
+                // Changes the value at that node to the value that was
+                // passed into the set method and returns the changed node
+                temp.value = value
+                return temp
+            }
+        }
 }
-    // set
 
     // insert
 
