@@ -175,9 +175,32 @@ class LinkedList {
                 return temp
             }
         }
-}
 
-    // insert
+        // Method for inserting a node at a specified index
+        // Edge cases (1) it's at the beginning of the list,
+        // (2) it's at the end of the list, (3) the index doesn't exist
+        insert (index, value) {
+            // (1) Insert at the beginning using the unshift method
+            if (index === 0) return this.unshift(value)
+            // (2) Insert at the end using the push method
+            if (index === this.length) return this.push(value)
+            // (3) Index doesn't exist so return false
+            if (index < 0 || index > this.length) return false 
+
+            // Creates the node to be inserted & gets the node before
+            // insertion using get and storing it in temp
+            const newNode = new Node(value)
+            const temp = this.get(index - 1)
+
+            // Sets the new node to point at the same one temp is pointing
+            // at, then sets temp to point at the new node and incremeents
+            // the length before returning the list
+            newNode.next = temp.next
+            temp.next = newNode
+            this.length++
+            return this
+            }
+        }
 
     // remove
 
