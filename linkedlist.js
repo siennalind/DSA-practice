@@ -160,7 +160,7 @@ class LinkedList {
         // Edge cases (1) There are no nodes, (2) index doesn't exist
         set (index, value) {
             // Checks if the index exists, returns undefined if it doesn't
-            if (index < 0 || index > this.length) { 
+            if (index < 0 || index > this.length - 1) { 
                 return undefined
             }
             // If the index exists this code runs instead
@@ -183,9 +183,9 @@ class LinkedList {
             // (1) Insert at the beginning using the unshift method
             if (index === 0) return this.unshift(value)
             // (2) Insert at the end using the push method
-            if (index === this.length) return this.push(value)
+            if (index === this.length - 1) return this.push(value)
             // (3) Index doesn't exist so return false
-            if (index < 0 || index > this.length) return false 
+            if (index < 0 || index > this.length - 1) return false 
 
             // Creates the node to be inserted & gets the node before
             // insertion using get and storing it in temp
@@ -200,8 +200,34 @@ class LinkedList {
             this.length++
             return this
             }
-        }
 
-    // remove
+            // Method to remove a node at a specified index
+            // Edge cases are (1) node is at beginning of the list
+            // (2) node is at end, (3) index doesn't exist
+            remove (index) {
+                // Edge case (1) shift method is used
+                if (index === 0) return this.shift()
+                // Edge case (2) pop method is used
+                if (index === this.length - 1) return this.pop()
+                // Edge case (3) returns false
+                if (index < 0 || index > this.length - 1) return false
+                // If not an edge case this code runs
+
+                // Declare variables to be used for removing node
+                let pre, temp
+                // Access node before the one being removed
+                pre = this.get(index - 1)
+                // Access the node being removed
+                temp = pre.next
+
+                // Sets the previous node to point at the same node the
+                // one being removed is currently pointing at
+                pre.next = temp.next
+                // Decrements length by 1
+                this.length--
+                // Return the list
+                return this
+            }
+        }
 
     // reverse
