@@ -228,6 +228,45 @@ class LinkedList {
                 // Return the list
                 return this
             }
-        }
 
-    // reverse
+            // Method to reverse the order of the linked list
+            // Edge case (1) there are no nodes, (2) there's only one node
+            // Return the reversed list
+            reverse () {
+                // Edge case (1) no nodes
+                if (!this.head) return false
+                // Edge case (2) only one node
+                if (this.length === 1) return this
+
+                // Else this code runs
+                // Variables declared are to enable iterating over the nodes
+                // to point them at the next node
+                let temp, next, pre, i
+
+                // Sets temp to point at first node 
+                temp = this.head
+                // Sets head to point at last node
+                this.head = this.tail
+                // Sets tail to point at first node
+                this.tail = temp
+
+                // Sets next to point at the next node along from temp and
+                // pre starts at null to point at the one before temp
+                next = temp.next
+                pre = null
+
+                // Loops over each node to flip the direction it points
+                for (i = 0; i < this.length; i++) {
+                    // Sets next to the one temp is currently pointing at
+                    next = temp.next
+                    // Sets temp to point at the node that is before it
+                    temp.next = pre
+                    // Moves pre along one node
+                    pre = temp
+                    // Moves temp along one node
+                    temp = next
+                }
+
+                return this
+            }
+}
