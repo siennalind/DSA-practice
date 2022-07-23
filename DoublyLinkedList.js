@@ -17,7 +17,6 @@ class DoublyLinkedList {
     // Method to add a value to the end of the list
     // Returns the list with the new node added
     push(value) {
-        // Node to be added
         const newNode = new Node(value)
 
         // This code runs if the list is empty
@@ -36,11 +35,37 @@ class DoublyLinkedList {
         this.length++
         return this
     }
+
+    // Method to remove a node at the end of the list
+    pop() {
+        if (this.length === 0) return undefined
+
+        temp = this.tail
+        this.tail = this.tail.prev
+        this.tail.next = null
+        temp.prev = null
+
+        this.length--
+        if (this.length === 0) return undefined
+        return temp
+    }
+
+    unshift(value) {
+        const newNode = new Node(value)
+        if (this.length === 0) {
+            this.head = newNode
+            this.tail = newNode
+        } 
+        else {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+        }
+
+        this.length++
+        return this
+    }
 }
-
-    // pop
-
-    // unshift
 
     // shift
 
