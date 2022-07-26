@@ -65,9 +65,25 @@ class DoublyLinkedList {
         this.length++
         return this
     }
-}
 
-    // shift
+    // Remove node at the beginning of list
+    shift() {
+        if (this.length === 0) return false
+        if (this.length === 1) {
+            this.length--
+            return this.head
+        }
+
+        let temp
+        temp = this.head
+        this.head = temp.next
+        temp.next = null
+        this.head.prev = null
+        
+        this.length--
+        return temp
+    }
+}
 
     // get
 
