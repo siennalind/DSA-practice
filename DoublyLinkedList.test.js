@@ -1,31 +1,13 @@
-const DoublyLinkedList = require('./DoublyLinkedList')
+const DoublyLinkedList = require("./DoublyLinkedList")
 
-const doublyLinkedList = new DoublyLinkedList()
+describe('#constructor', () => {
+    test('creating doubly linked list', () => {
+        const myList = new DoublyLinkedList(1)
 
-describe("Doubly Linked List", () => {
-    const doublyLinkedList = new DoublyLinkedList()
-
-    afterEach(() => {
-        jest.restoreAllMocks()
+        expect(myList.head.value).toBe(1)
+        expect(myList.tail.value).toBe(1)
+        expect(myList.head.prev).toBeNull()
+        expect(myList.tail.next).toBeNull()
+        expect(myList.length).toBe(1)
     })
-
-    test("checks push exists & is a function", () => {
-        expect(doublyLinkedList.push()).toBeDefined()
-        expect(typeof doublyLinkedList.push).toBe("function")
-    })
-})
-
-
-// pop
-
-// unshift
-
-// shift
-
-// get
-
-// set
-
-// insert
-
-// remove
+  })
