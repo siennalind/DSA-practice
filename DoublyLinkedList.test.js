@@ -11,3 +11,14 @@ describe('#constructor', () => {
         expect(myList.length).toBe(1)
     })
   })
+
+describe('#push', () => {
+    test('creates new node at end of list', () => {
+        const myList = new DoublyLinkedList(1)
+        myList.push(2)
+
+        expect(myList.head.value).toBe(1)
+        expect(myList.tail.value).toBe(2)
+        expect(myList.length).toBe(2)
+    })
+})
