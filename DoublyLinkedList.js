@@ -32,10 +32,27 @@ class DoublyLinkedList {
         this.length++
         return this
     }
+
+    // remove node from end of list
+    // edge case (1) empty list
+    // edge case (2) only one node
+    pop() {
+        if (this.length === 0) return undefined
+        
+        let temp = this.tail
+        if (this.length === 1) {
+            this.tail = null
+            this.head = null
+        } else {
+            this.tail = this.tail.prev
+            this.tail.next = null
+            temp.prev = null
+        }
+        this.length--
+        return temp
+    }
 }
 
-    // push
-    // pop
     // unshift
     // shift
     // get
