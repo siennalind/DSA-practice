@@ -21,6 +21,7 @@ class DoublyLinkedList {
     // Add node to the end of the list
     push(value) {
         const newNode = new DLLNode(value)
+
         if (this.length === 0) {
             this.head = newNode
             this.tail = newNode
@@ -51,13 +52,26 @@ class DoublyLinkedList {
         this.length--
         return temp
     }
-}
 
-    // unshift
+    // adds a node at the start of the list
+    // edge case (1) there are no items
+    unshift(value) {
+        const newNode = new DLLNode(value)
+
+        if (this.length === 0) {
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+        }
+        this.length++
+        return this
+    }
+}
     // shift
     // get
     // set
     // insert
     // remove
-
-module.exports = DoublyLinkedList;
