@@ -69,8 +69,27 @@ class DoublyLinkedList {
         this.length++
         return this
     }
+
+    // remove node at the beginning of the list
+    // edge case (1) there are no nodes
+    // edge case (2) there's only one node
+    shift() {
+        if (this.length === 0) return false
+
+        let temp = this.head
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = this.head.next
+            this.head.prev = null
+            temp.next = null
+        }
+        this.length--
+        return temp
+    }
 }
-    // shift
+
     // get
     // set
     // insert
