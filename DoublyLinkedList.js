@@ -109,9 +109,18 @@ class DoublyLinkedList {
         }
         return temp
     }
+
+    // changes value of node at the specified node
+    set(index, value) {
+        let temp = this.get(index)
+        if (temp) {
+            temp.value = value
+            return true
+        }
+        return false
+    }
 }
 
-    // get
     // set
     // insert
     // remove
