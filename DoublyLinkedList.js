@@ -119,8 +119,28 @@ class DoublyLinkedList {
         }
         return false
     }
-}
 
-    // set
-    // insert
+    // insert node at the specified index
+    // edge case (1) insertion at beginning of list
+    // edge case (2) insertion at end of list
+    insert(index, value) {
+        if (index === 0) return this.unshift(value)
+        if (index === this.length) return this.push(value)
+        if (index < 0 || index > this.length) return false
+
+        const newNode = new DLLNode(value)
+        let temp, after
+
+        temp = this.get(index - 1)
+        after = temp.next
+
+        temp.next = newNode
+        after.prev = newNode
+        newNode.prev = temp
+        newNode.next = after
+
+        this.length++
+        return true
+    }
+}
     // remove
