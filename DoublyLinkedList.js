@@ -142,5 +142,23 @@ class DoublyLinkedList {
         this.length++
         return true
     }
+
+    // removes a node at the specified index
+    // edge case (1) at the end of the list
+    // edge case (2) at the beginning of the list
+    // edge case (3) index doesn't exist
+    remove (index) {
+        if (index === 0) return this.shift()
+        if (index === this.length) return this.pop()
+        if (index < 0 || index > this.length) return false
+
+        const temp = this.get(index)
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
+        temp.next = null
+        temp.prev = null
+
+        this.length--
+        return temp
+    }
 }
-    // remove
