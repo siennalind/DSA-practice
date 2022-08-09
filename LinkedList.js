@@ -32,7 +32,33 @@ class LinkedList {
         this.length++
         return this
     }
-    
+
+    // remove node at end of the list
+    // edge case (1) there are no nodes
+    // edge case (2) there's only one node
+    pop() {
+        if (this.length === 0) return undefined
+
+        let temp = this.head
+        if (this.length === 1) {
+            this.head = null
+            this.tail = null
+        } else {
+            let pre = this.head
+
+            while (temp.next) {
+                pre = temp
+                temp = temp.next
+            }
+
+            this.tail = pre
+            this.tail.next = null
+        }
+        
+        this.length--
+        return temp
+    }
+
     // pop
     // unshift
     // shift
