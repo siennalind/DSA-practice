@@ -16,7 +16,23 @@ class LinkedList {
         this.length = 1
     }
 
-    // push
+    // add a node at the end of the list
+    // edge case (1) there are no nodes
+    push (value) {
+        const newNode = new Node(value)
+
+        if (this.length === 0) {
+            this.head = newNode
+            this.tail = newNode
+        } else {
+            this.tail.next = newNode
+            this.tail = newNode
+        }
+
+        this.length++
+        return this
+    }
+    
     // pop
     // unshift
     // shift
@@ -26,5 +42,3 @@ class LinkedList {
     // remove
     // reverse
 }
-
-module.exports = LinkedList;
